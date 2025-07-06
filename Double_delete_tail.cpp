@@ -36,9 +36,9 @@ void print_backward(Node *head)
     cout << "\n";
 }
 
-void delete_head(Node *&head, Node *&tail)
+void delete_tail(Node *&head, Node *&tail)
 {
-    Node *deleteNode = head;
+    Node *deleteNode = tail;
     if (head == tail)
     {
         head = NULL;
@@ -46,9 +46,10 @@ void delete_head(Node *&head, Node *&tail)
         delete deleteNode;
         return;
     }
-    head = head->next;
-    head->prev = NULL;
-
+  
+    tail = tail->prev;
+    tail->next = NULL;
+    
     delete deleteNode;
 }
 
@@ -63,10 +64,7 @@ int main()
 
     a->next = tail;
     tail->prev = a;
-
-    delete_head(head, tail);
-    delete_head(head, tail);
-    delete_head(head, tail);
+    delete_tail(head,tail);
     print_forward(head);
     print_backward(tail);
 
