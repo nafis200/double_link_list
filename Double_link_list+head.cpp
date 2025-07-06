@@ -34,10 +34,11 @@ void print_backward(Node* head){
      cout << "\n";
 }
 
-void insert_at_head(Node* &head){
+void insert_at_head(Node* &head, Node* &tail){
     Node* newNode = new Node(40);
     if(head == NULL){
         head = newNode;
+        tail = newNode;
         return;
     }
     newNode->next = head;
@@ -60,7 +61,7 @@ int main()
     a->next = tail;
     tail->prev = a;
 
-    insert_at_head(head);
+    insert_at_head(head,tail);
 
     print_forward(head);
     print_backward(tail);
